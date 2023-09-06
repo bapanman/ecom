@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
+const API_URL = "";
+
 const AddProduct = () => {
     const [name, setName] = React.useState('');
     const [price, setPrice] = React.useState('');
@@ -19,7 +21,7 @@ const AddProduct = () => {
         }
 
         const userId = JSON.parse(localStorage.getItem('user'))._id;
-        let result = await fetch("http://localhost:5000/add-product", {
+        let result = await fetch(`${API_URL}/add-product`, {
             method: "post",
             body: JSON.stringify({ name, price, category, company, userId }),
             headers: {

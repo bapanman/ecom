@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+
+
+const API_URL = "";
+
 const Login = () => {
 
     const [email, setEmail] = React.useState('');
@@ -14,7 +18,7 @@ const Login = () => {
     }, [])
 
     const handleLogin = async () => {
-        let result = await fetch("http://localhost:5000/login", {
+        let result = await fetch(`${API_URL}/login`, {
             method: 'post',
             body: JSON.stringify({ email, password }),
             headers: {

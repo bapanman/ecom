@@ -1,6 +1,9 @@
 const mongoose= require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
 
-mongodb_url = '\mongodb+srv://bapmon78:ZPeJZW0E9IRbs6Z9@ecom-cluster.bkubgim.mongodb.net/?retryWrites=true&w=majority'
+const mongodb_url = process.env.MONGODB_URI || `\mongodb+srv://${process.env.DB_USERNANE}:${process.env.DB_PASSWORD}@ecom-cluster.bkubgim.mongodb.net/?retryWrites=true&w=majority`
+
 mongoose.connect(mongodb_url)
 
 const db = mongoose.connection;
