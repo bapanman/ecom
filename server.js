@@ -5,6 +5,9 @@ const User = require("./db/User");
 const Product = require("./db/Product");
 const Jwt = require("jsonwebtoken");
 const jwtKey = "e-com";
+const dotenv = require('dotenv');
+dotenv.config();
+
 const app = express();
 
 app.use(express.json());
@@ -110,7 +113,17 @@ app.get("/search/:key", async (req, resp) => {
   resp.send(result);
 });
 
-const port = 5000;
+
+if (process.env.NODE_ENV === 'production') {
+  app.user(express.static("client/build"));
+}
+
+
+const port = process.env.PORT || 5000;
+
 app.listen(port, () => {
   console.log(`Server started at port : ${port}`);
 });
+
+
+
