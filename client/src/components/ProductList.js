@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
-const API_URL = "";
+const API_URL = "http://localhost:5000";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);

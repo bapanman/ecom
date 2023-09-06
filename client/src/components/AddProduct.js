@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const API_URL = "";
+const API_URL = "http://localhost:5000";
 
 const AddProduct = () => {
     const [name, setName] = React.useState('');

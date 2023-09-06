@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 
 
-const API_URL = "";
+const API_URL = "http://localhost:5000";
 
 
 const UpdateProduct = () => {
