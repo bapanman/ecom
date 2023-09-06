@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://ecom-backend-iu5z.onrender.com";
 
 const Login = () => {
 
