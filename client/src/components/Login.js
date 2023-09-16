@@ -84,7 +84,7 @@ const Login = () => {
     setUserStateData({ ...userStateData, [key]: event?.target?.value });
     // checking input validation
     userFormValidator(key);
-    console.log(JSON.stringify(errorStateData));
+    // console.log(JSON.stringify(errorStateData));
   };
 
   // Reset user signup form
@@ -96,7 +96,7 @@ const Login = () => {
   // Submit signup form
   const submitLoginForm = async (event) => {
     event.preventDefault();
-    console.log("submit form called", userStateData);
+    // console.log("submit form called", userStateData);
     // invoke server api
     setUserStateData({...userStateData, isLoader: true}) // activate loader
     axiosConnect
@@ -113,8 +113,8 @@ const Login = () => {
         }
       })
       .catch((error) => {
-        console.log("error while login: ", error);
-        const data = error?.response?.data;
+        console.error("error while login: ", error);
+        // const data = error?.response?.data;
         setUserStateData({...userStateData, isLoader: false})
         alert("Login unsuccessfull !! try again !!");
       });
