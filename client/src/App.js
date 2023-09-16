@@ -1,13 +1,13 @@
 import './App.css';
 import Nav from './components/Nav';
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
-import Footer from './components/Footer';
 import SignUp from './components/SignUp';
 import PrivateComponent from './components/PrivateComponent'
 import Login from './components/Login'
 import AddProduct from './components/AddProduct';
 import ProductList from './components/ProductList';
 import UpdateProduct from './components/UpdateComponent';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
@@ -28,7 +28,6 @@ function App() {
 
      </Routes>
      </BrowserRouter>
-     <Footer />
     </div>
   );
 }

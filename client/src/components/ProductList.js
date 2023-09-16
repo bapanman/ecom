@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { Table, Button, Input, Container, Alert } from "reactstrap";
 
 const API_URL = "https://ecom-backend-iu5z.onrender.com";
+const LOCAL_URL = "http://localhost:5000";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -48,39 +49,65 @@ const ProductList = () => {
   return (
     <div className="product-list">
       <h3>Wellcome to Mandal's Electronics</h3>
-      <input
-        type=""
-        className="search-product-box"
-        placeholder="Search Product"
-        onChange={searchHandle}
-      />
-      <ul>
-        <li>S. No.</li>
-        <li>P.Name</li>
-        <li>P.Price</li>
-        <li>P.Category</li>
-        <li>P.company</li>
-        <li>Operation</li>
-      </ul>
-      {products.length > 0 ? (
-        products.map((item, index) => (
-          <ul key={item._id}>
-            <li>{index + 1}</li>
-            <li>{item.name}</li>
-            <li>{item.price}</li>
-            <li>{item.category}</li>
-            <li>{item.company}</li>
-            <li>
-              <button className="action-btn delete-btn" onClick={() => deleteProduct(item._id)}>Delete</button>
-              <button className="action-btn">
-                <Link to={"/update/" + item._id}>Update</Link>
-              </button>
-            </li>
-          </ul>
-        ))
-      ) : (
-        <h1>No Result Found</h1>
-      )}
+      <Container>
+        <Input
+          type="text"
+          className="mb-3"
+          placeholder="Search Product"
+          onChange={searchHandle}
+        />
+        {products.length > 0 ? (
+          <Table striped bordered hover responsive>
+            <thead>
+              <tr>
+                <th>Sl no</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Company</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.length > 0 &&
+                products.map((item, index) => (
+                  <tr key={item._id}>
+                    <th scope="row">{index + 1}</th>
+                    <td>{item.name}</td>
+                    <td>{item.price}</td>
+                    <td>{item.category}</td>
+                    <td>{item.company}</td>
+                    <td>
+                      <div>
+                        <Button className="mx-2 mb-1" color="primary">
+                          <Link
+                            style={{
+                              textDecoration: "none",
+                              color: "white",
+                            }}
+                            to={"/update/" + item._id}
+                          >
+                            Update
+                          </Link>
+                        </Button>
+                        <Button
+                          className="mx-2 mb-1"
+                          color="danger"
+                          outline
+                          onClick={() => deleteProduct(item._id)}
+                        >
+                          Delete
+                        </Button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </Table>
+        ) : (
+          <Alert color="warning">Sorry ! No result found !</Alert>
+        )}
+      </Container>
     </div>
   );
 };

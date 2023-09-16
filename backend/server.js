@@ -35,15 +35,15 @@ app.post("/login", async (req, resp) => {
     if (user) {
       Jwt.sign({ user }, jwtKey, { expiresIn: "2h" }, (err, token) => {
         if (err) {
-          resp.send("Something went wrong");
+          resp.status(404).send("Something went wrong");
         }
         resp.send({ user, auth: token });
       });
     } else {
-      resp.send({ result: "No User found" });
+      resp.status(404).send({ result: "No User found" });
     }
   } else {
-    resp.send({ result: "No User found" });
+    resp.status(404).send({ result: "No User found" });
   }
 });
 
